@@ -14,7 +14,7 @@ easy_admin:
     entities:
         # List the entity class name you want to manage
         Hashtag:
-            class: App\Entity\Hashtag
+            class: App\Domain\Entity\Hashtag
             help: 'Hashtags used in the console command tweet:fetch'
             label: 'Hashtag'
             list:
@@ -25,7 +25,7 @@ easy_admin:
                  - 'id'
                 max_results: 10
         Tweet:
-            class: App\Entity\Tweet
+            class: App\Domain\Entity\Tweet
             help: 'Tweets obtained from console command tweet:fetch'
             label: 'Tweets'
             disabled_actions: ['new']

@@ -17,7 +17,9 @@ App\Domain\Entity\Hashtag:
       nullable: true
     lastTweet:
       column: last_tweet
-      type: integer
+      type: bigint
+      options:
+        unsigned: true
       nullable: true
   oneToMany:
     tweet:

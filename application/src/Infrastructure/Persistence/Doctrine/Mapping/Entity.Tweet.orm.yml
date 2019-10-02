@@ -12,8 +12,9 @@ App\Domain\Entity\Tweet:
   fields:
     tweetId:
       column: tweet_id
-      type: integer
-      unique: true
+      type: bigint
+      options:
+        unsigned: true
     userName:
       column: user_name
       type: string
@@ -21,7 +22,7 @@ App\Domain\Entity\Tweet:
     userImage:
       column: user_image
       type: string
-      length: 100
+      length: 255
       nullable: true
     content:
       column: content
@@ -35,3 +36,6 @@ App\Domain\Entity\Tweet:
       inversedBy: tweet
       joinColumn:
         nullable: false
+  uniqueConstraints:
+    tweet_hashtag_idx:
+      columns: [ tweet_id, hashtag_id ]
