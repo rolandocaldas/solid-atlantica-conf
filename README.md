@@ -29,7 +29,7 @@ Open your terminal and go to the docker folder:
 
 The first time that you run the application you need to load the dependencies and execute the doctrine migrations:
 
-```$ docker-compose execute php-fpm bash```
+```$ docker-compose exec php-fpm bash```
 
 ```# composer install```
 
