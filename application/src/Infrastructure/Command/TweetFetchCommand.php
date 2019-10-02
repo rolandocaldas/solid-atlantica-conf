@@ -70,7 +70,7 @@ EOD
         $io->title(sprintf('Searching tweets for: %s', $twitterSearch->hashtag()->getName()));
 
         $tweets = $this->buildTweets(
-            $this->twitterClient->findTweetsWith($twitterSearch)->statuses,
+            $this->twitterClient->findTweetsWith($twitterSearch),
             $twitterSearch->hashtag(),
             $io
         );

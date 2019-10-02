@@ -7,6 +7,8 @@ use GuzzleHttp\Client;
 
 class TwitterClient extends Client implements \App\Domain\Service\TwitterClient
 {
+    private $data;
+
     public function __construct(array $config = [])
     {
         parent::__construct($config);
@@ -21,6 +23,7 @@ class TwitterClient extends Client implements \App\Domain\Service\TwitterClient
     public function findTweetsWith(
         TwitterSearch $twitterSearch
     ) {
+        $this->data = [];
         try {
 
             $options = [
@@ -34,11 +37,20 @@ class TwitterClient extends Client implements \App\Domain\Service\TwitterClient
                 ]
             ];
 
-            $JSONResponse = $this->get('search/tweets.json', $options)->getBody()->getContents();
-
-            return json_decode($JSONResponse);
+            $continue = true;
+            do {
+                $JSONResponse = json_decode($this->get('search/tweets.json', $options)->getBody()->getContents());
+                $this->data = array_merge($this->data, $JSONResponse->statuses);
+                if (property_exists($JSONResponse->search_metadata, 'next_results')) {
+                    parse_str(parse_url($JSONResponse->search_metadata->next_results, PHP_URL_QUERY), $options['query']);
+                } else {
+                    $continue = false;
+                }
+            } while ($continue);
         } catch (\Exception $e) {
             return false;
         }
+
+        return $this->data;
     }
 }
