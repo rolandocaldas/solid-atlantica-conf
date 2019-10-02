@@ -1,0 +1,26 @@
+App\Domain\Entity\Hashtag:
+  type: entity
+  table: hashtag
+  repositoryClass: App\Infrastructure\Persistence\Doctrine\Repository\HashtagRepository
+  id:
+    id:
+      type: uuid
+      generator:
+        strategy: CUSTOM
+      customIdGenerator:
+        class: Ramsey\Uuid\Doctrine\UuidGenerator
+  fields:
+    name:
+      column: name
+      type: string
+      length: 100
+      nullable: true
+    lastTweet:
+      column: last_tweet
+      type: integer
+      nullable: true
+  oneToMany:
+    tweet:
+      targetEntity: App\Domain\Entity\Tweet
+      mappedBy: hashtag
+      orphanRemoval: true

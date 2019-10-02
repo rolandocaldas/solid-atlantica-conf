@@ -1,0 +1,37 @@
+App\Domain\Entity\Tweet:
+  type: entity
+  table: tweet
+  repositoryClass: App\Infrastructure\Persistence\Doctrine\Repository\TweetRepository
+  id:
+    id:
+      type: uuid
+      generator:
+        strategy: CUSTOM
+      customIdGenerator:
+        class: Ramsey\Uuid\Doctrine\UuidGenerator
+  fields:
+    tweetId:
+      column: tweet_id
+      type: integer
+      unique: true
+    userName:
+      column: user_name
+      type: string
+      length: 100
+    userImage:
+      column: user_image
+      type: string
+      length: 100
+      nullable: true
+    content:
+      column: content
+      type: text
+    createdAt:
+      column: created_at
+      type: datetime
+  manyToOne:
+    hashtag:
+      targetEntity: App\Domain\Entity\Hashtag
+      inversedBy: tweet
+      joinColumn:
+        nullable: false

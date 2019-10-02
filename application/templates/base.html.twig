@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@8.0.3/dist/sweetalert2.css">
+
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    <header class="container">
+        <h1 style="position: absolute; left: -10000px;">{{ block('title') }}</h1>
+        <div class="row justify-content-md-center align-items-center">
+            <div class="col-md-3">
+                <a target="_blank" href="https://www.phpvigo.com">
+                    <img style="width: 150px;" src="https://pbs.twimg.com/profile_images/686976828897161217/iGhH7VPz_400x400.jpg">
+                </a>
+            </div>
+            <nav class="col-md-9 text-right">
+                {%  block menu %}{%  endblock %}
+                <a href="{{ path('list_hashtags') }}" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Hashtags
+                </a>
+                <a href="{{ path('admin') }}" class="btn btn-info">
+                    <i class="fas fa-lock"></i> Admin panel
+                </a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+    {% block body %}{% endblock %}
+    </main>
+    <footer class="container text-center">
+        <a href="https://www.phpvigo.com" target="_blank">Application sample for Symfony 4 PHPVigo Workshop - {{ "now" | date('Y') }}</a>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script>
+        $(function(){
+            Swal.fire('Este sitio web va a preparar cookies.',
+                'Aceptadon o denegando vamos ha hacer exactamente lo mismo, esto solo es para <span class="text-danger font-weight-bold">molestar</span>'
+            );
+        });
+    </script>
+    {% block javascripts %}{% endblock %}
+</body>
+</html>

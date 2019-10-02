@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ hashtag.getName() }}: Random tweet{% endblock %}
+
+{% block menu %}
+<a href="" class="btn btn-primary">
+    <i class="fas fa-sync-alt"></i> Refresh
+</a>
+{% endblock %}
+{% block body %}
+    <div class="row justify-content-md-center">
+        <div class="col-md-auto">
+            {% if winner.originalTweetUsername is not empty %}
+                <div class="text-right">
+                    RT by <a target="_blank" href="https://twitter.com/{{ winner.username }}">@{{ winner.userName }}</a>
+                </div>
+            {% endif %}
+
+            <blockquote class="twitter-tweet">
+                <a href="https://twitter.com/{{ winner.userName }}/status/{{ winner.tweetId }}"></a>
+            </blockquote>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+{% endblock %}
+

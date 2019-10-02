@@ -1,0 +1,41 @@
+easy_admin:
+    site_name: '<img src="https://pbs.twimg.com/profile_images/686976828897161217/iGhH7VPz_400x400.jpg"> RandomTweet'
+    design:
+        brand_color: '#0368ff'
+        color_scheme: 'light'
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+    list:
+        actions: ['show', '-edit']
+    show:
+        actions: ['list', '-edit']
+    entities:
+        # List the entity class name you want to manage
+        Hashtag:
+            class: App\Entity\Hashtag
+            help: 'Hashtags used in the console command tweet:fetch'
+            label: 'Hashtag'
+            list:
+                sort: 'name'
+                title: 'Hashtag list'
+                fields:
+                 - 'name'
+                 - 'id'
+                max_results: 10
+        Tweet:
+            class: App\Entity\Tweet
+            help: 'Tweets obtained from console command tweet:fetch'
+            label: 'Tweets'
+            disabled_actions: ['new']
+            list:
+                title: 'Tweet list'
+                fields:
+                 - 'id'
+                 - { property: 'link', type: raw }
+                 - { property: 'userImage', label: 'Avatar', type: image }
+                 - 'userName'
+                 - 'content'
+                 - 'createdAt'
+                max_results: 10
