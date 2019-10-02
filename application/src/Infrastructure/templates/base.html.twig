@@ -38,15 +38,6 @@
     <footer class="container text-center">
         <a href="https://www.phpvigo.com" target="_blank">Application sample for Symfony 4 PHPVigo Workshop - {{ "now" | date('Y') }}</a>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script>
-        $(function(){
-            Swal.fire('Este sitio web va a preparar cookies.',
-                'Aceptadon o denegando vamos ha hacer exactamente lo mismo, esto solo es para <span class="text-danger font-weight-bold">molestar</span>'
-            );
-        });
-    </script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
