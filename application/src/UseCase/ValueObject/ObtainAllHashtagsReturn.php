@@ -6,7 +6,7 @@
  * Time: 2:44
  */
 
-namespace App\UseCase;
+namespace App\UseCase\ValueObject;
 
 use App\Domain\HashtagCollection;
 

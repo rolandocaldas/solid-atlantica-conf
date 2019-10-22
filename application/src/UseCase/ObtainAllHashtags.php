@@ -9,6 +9,7 @@
 namespace App\UseCase;
 
 use App\Domain\Entity\HashtagRepository;
+use App\UseCase\ValueObject\ObtainAllHashtagsReturn;
 
 class ObtainAllHashtags
 {
